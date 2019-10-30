@@ -16,13 +16,14 @@ class Line: public Shape{
 public:
 	Point start;
 	Point end;
-
+	// 构造器
 	Line(const Point& start, const Point& end){
 		this->start = start;
 		this->end = end;
 	}
 
 	//实现自己的Draw，负责画自己
+	// ！业务主要部分
 	virtual void Draw(const Graphics& g){
 		g.DrawLine(Pens.Red, 
 			start.x, start.y,end.x, end.y);

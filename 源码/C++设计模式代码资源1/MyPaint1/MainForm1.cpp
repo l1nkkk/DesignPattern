@@ -38,6 +38,7 @@ void MainForm::OnMouseUp(const MouseEventArgs& e){
 	p2.x = e.X;
 	p2.y = e.Y;
 
+	// 如果目前用户是选择画线，一个radiobutton
 	if (rdoLine.Checked){
 		Line line(p1, p2);
 		lineVector.push_back(line);
@@ -55,15 +56,17 @@ void MainForm::OnMouseUp(const MouseEventArgs& e){
 	}
 
 	//...
+	// Refresh系统会调用OnPaint
 	this->Refresh();
 
 	Form::OnMouseUp(e);
 }
 
 void MainForm::OnPaint(const PaintEventArgs& e){
-
+	// 业务逻辑的主要部分
 	//针对直线
 	for (int i = 0; i < lineVector.size(); i++){
+		// 取起始点和终止点调用画线函数
 		e.Graphics.DrawLine(Pens.Red,
 			lineVector[i].start.x, 
 			lineVector[i].start.y,

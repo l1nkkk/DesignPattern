@@ -5,6 +5,7 @@ private:
 
 	//针对所有形状
 	// 这里注意Shape用的是指针，因为这里需要多态性，如果虽然是一个Shape类型，但是真正塞的是一个Line类型。
+	// 如果不用的话就会导致对象切割
 	vector<Shape*> shapeVector;
 
 public:
@@ -30,8 +31,9 @@ void MainForm::OnMouseDown(const MouseEventArgs& e){
 void MainForm::OnMouseUp(const MouseEventArgs& e){
 	p2.x = e.X;
 	p2.y = e.Y;
-
+	// ！如果后面用到了工厂设计模式也可以统一处理
 	if (rdoLine.Checked){
+		// 需要记得在某个地方delete
 		shapeVector.push_back(new Line(p1,p2));
 	}
 	else if (rdoRect.Checked){
