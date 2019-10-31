@@ -2,6 +2,7 @@
 class Library{
 
 public:
+// 里面实现了以下三个步骤
 	void Step1(){
 		//...
 	}
